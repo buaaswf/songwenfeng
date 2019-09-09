@@ -1,0 +1,589 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+   <style type="text/css">
+
+   /*
+CSS stylesheet is based on killwing's flavored markdown style:
+https://gist.github.com/2937864
+*/
+body{
+    margin: 0 auto;
+    font: 13px/1.231 Helvetica, Arial, sans-serif;
+    color: #444444;
+    line-height: 1;
+    max-width: 960px;
+    padding: 5px;
+}
+h1, h2, h3, h4 {
+    color: #111111;
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+    margin-bottom: 16px;
+    padding: 0;
+}
+h1 {
+    font-size: 28px;
+}
+h2 {
+    font-size: 22px;
+    margin: 20px 0 6px;
+}
+h3 {
+    font-size: 21px;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 16px;
+}
+a {
+    color: #0099ff;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+a:link,a:visited{
+ text-decoration:none;
+}
+a:hover{
+ text-decoration:underline;
+}
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+li {
+    line-height: 24px;
+    margin-left: 44px;
+}
+li ul, li ul {
+    margin-left: 24px;
+}
+ul, ol {
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 540px;
+}
+
+p {
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 540px;
+    margin-top: 3px;
+}
+
+pre {
+    padding: 0px 4px;
+    max-width: 800px;
+    white-space: pre-wrap;
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    line-height: 1.5;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+}
+code {
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    line-height: 1.5;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+}
+pre code {
+    border: 0px;
+}
+aside {
+    display: block;
+    float: right;
+    width: 390px;
+}
+blockquote {
+    border-left:.5em solid #40AA53;
+    padding: 0 2em;
+    margin-left:0;
+    max-width: 476px;
+}
+blockquote  cite {
+    font-size:14px;
+    line-height:20px;
+    color:#bfbfbf;
+}
+blockquote cite:before {
+    content: '\2014 \00A0';
+}
+
+blockquote p {  
+    color: #666;
+    max-width: 460px;
+}
+hr {
+    height: 1px;
+    border: none;
+    border-top: 1px dashed #0066CC
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+button, input {
+  line-height: normal;
+  *overflow: visible;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: normal;
+  margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+  margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+  display: inline-block;
+  width: 210px;
+  padding: 4px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  height: 18px;
+  color: #808080;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+select, input[type=file] {
+  height: 27px;
+  line-height: 27px;
+}
+textarea {
+  height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+  color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+  outline: none;
+  border-color: rgba(82, 168, 236, 0.8);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+/* buttons */
+button {
+  display: inline-block;
+  padding: 4px 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: #0064cd;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+  background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+  background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+  background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+  background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+  background-image: linear-gradient(top, #049cdb, #0064cd);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border: 1px solid #004b9a;
+  border-bottom-color: #003f81;
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  transition: 0.1s linear all;
+  border-color: #0064cd #0064cd #003f81;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+button:hover {
+  color: #fff;
+  background-position: 0 -15px;
+  text-decoration: none;
+}
+button:active {
+  -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+/* table  */
+table {
+    border-spacing: 0;
+    border: 1px solid #ccc;
+}
+td, th{
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+/* code syntax highlight.
+Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html#custom_your_own
+ */
+pre .literal,
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+    color: #008000;
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+    color: #0000FF;
+    font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .python .decorator,
+pre .ruby .constant {
+    color: #0000FF;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+    color: #D14
+}
+
+pre .title,
+pre .id {
+    color: #900;
+    font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+    font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+    color: #458;
+    font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+    color: #000080;
+    font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+    color: #008080
+}
+
+pre .regexp {
+    color: #009926
+}
+
+pre .class {
+    color: #458;
+    font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+    color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+    color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+    color: #999;
+    font-weight: bold
+}
+
+pre .deletion {
+    background: #fdd
+}
+
+pre .addition {
+    background: #dfd
+}
+
+pre .diff .change {
+    background: #0086b3
+}
+
+pre .chunk {
+    color: #aaa
+}
+
+pre .markdown .header {
+    color: #800;
+    font-weight: bold;
+}
+
+pre .markdown .blockquote {
+    color: #888;
+}
+
+pre .markdown .link_label {
+    color: #88F;
+}
+
+pre .markdown .strong {
+    font-weight: bold;
+}
+
+pre .markdown .emphasis {
+    font-style: italic;
+}
+
+   </style>
+
+   
+
+   
+
+</head>
+
+<body>
+
+    <h1><strong>Wenshuang Song</strong></h1>
+
+<h1></h1>
+
+<p>(宋文凤)<br>
+Algorithm Engineer<br>
+Beihang Univeristy<br>
+Computer Vision<br>
+Email: songwenfenga@gmail.com<br>
+Tel: 18810318719<br>
+Github: <a href="https://github.com/buaaswf">https://github.com/buaaswf</a> <br>
+CSDN: <a href="https://blog.csdn.net/swfa1">https://blog.csdn.net/swfa1</a>
+
+<p><img src='./images/zhengjianzhao.jpg', width='150'></p>
+
+
+
+<h2>Short Bio</h2>
+
+<p>My research interests include computer vision and visual perception (e.g., object recognition, localization, segmentation, pose estimation) especially in the field of scene segmentation. The experience in the State Key Laboratory of Virtual Reality Technology and System of Beihang motivates my interest and deep understanding of deep learning on Computer-assisted Diagnosis (CAD). My research domain is scene understanding and environment perception based on deep learning, including object detection based on image and video including unbalance dataset, depth estimation, person reid, UAV tracking. Here is the link of my  <a href="WenshuangSong_Algorithm_Engineer_Resume.pdf">CV</a>. </p>
+
+
+
+<p><strong>If you are interested in my topics , please send me an <a href="mailto:songwenfenga@gmail.com">email</a>.</strong></p>
+
+
+<h2>Education</h2>
+
+
+
+<!-- --> 
+
+<blockquote>
+<p>Beihang University</a> <br />
+Doctor's Degree, Computer Science <br />
+From Sept. 2012 to present <br /></p>
+</blockquote>
+
+<!-- --> 
+
+
+
+<h2>Research</h2>
+
+<ul>
+
+<li>Real-time scene segmentation</li>
+<li>3D Point cloud segmentation</li>
+<li>Computer aided medical</li>
+
+
+
+</ul>
+
+
+
+
+<h2>Professional Skill</h2>
+
+<ul>
+
+<li>Have in-depth research on scene understanding and environment perception based on deep learning, including object detection based on vision and LiDAR, scene segmentation and other perception tasks;</li>
+<li>Perfect in designing the network structure according to the needs of the real scene, and at the same time, can also ensure the algorithm is both scalable and commercializing feasible；</li>
+<li>Familiar with common classification, clustering and regression algorithms of machine learning, familiar with convolutional neural network algorithm and its application process；</li>
+<li>Skillful in the commonly used data structure and algorithm, and can balance time and space efficiency while programming according to actual situation；</li>
+<li>Perfect in Linux and Vim; Familiar with various script languages: C++, Python, Matlab; And skillful at Tensorflow, Pytorch, Caffe and other frameworks .</li>
+
+
+</ul>
+
+
+
+
+
+
+<h2>Experience</h2>
+
+<ul>
+
+
+<li>BUAA Virtual Reality Laboratory，2015</li>
+
+</ul>
+
+
+
+
+<h2>Selected Project</h2>
+<p></p>
+<ul>
+
+  
+<li> <p><strong>Real-time Iris Segmentation System</strong></p><strong>[Objective]</strong> Overcome the challenge of various poses, illuminations and occlusions , and make efficient use of scarce resources available on embedded platforms for semantic segmentation. <strong>[Method]</strong> A multi-task cascaded CNNs based framework was proposed for joint face detection, and we adopts ENet-based to implement real-time segmentation, which combine attention mechanism and spatial pyramid to extract precise dense features for pixel labelling and requiring low latency . <strong>[Result]</strong> Our proposed approach achieves performance of average accuracy 94.09%, Mean IOU 93.54%, and average processing time 68.78 FPS.<p><img src='./images/5.jpg', width='350'></p></li>
+<p></p>
+<li><p><strong>Scene Segmentation based on 3D point cloud for safe driving</strong></p><strong>[Objective]</strong> In order to  associating instance and semantic segmentation on point clouds and explore the relationships between them. <strong>[Method]</strong> We present a powerful framework for instance and semantics segmentation on point clouds, with  a  Pyramid Attention module for semantic segmentation task and added to instance feature matrix,  we designed an effective decoder module Global Attention for instance segmentation and fused with semantics segmentation matrix. <strong>[Result]</strong> Our algorithm can achieve good performance while guarantee both scalability and feasibility of commercialisation.<p><img src='./images/4.jpg', width='350'></p></li>
+<p></p>
+<li><p><strong>Lung Cancer Detection based on 3D U-net with CT images</strong></p><strong>[Objective]</strong> To solve the problem of resolution loss and class imbalance  when crop or downsample, and minimal computational overhead. <strong>[Method]</strong> We described a two-stage U-Net-like framework for two-class segmentation which can directly make prediction for data with original resolution due to its SRCNN-inspired architecture. We adopt a novel attention gate model for CT images that automatically learns to focus on target structures of varying shapes and sizes integrated into standard 3D U-Net model , and trained with a simply weighted dice coecients. <strong>[Result]</strong> The framework we presented consistently improve the prediction performance  while preserving computational efficiency.<p><img src='./images/6.jpg', width='350'></p></li>
+<p></p>
+<li><p><strong>Classification of breast cancer cells and nidus detection based on CNN </strong></p><strong>[Objective]</strong> Because of the large scale of Whole Slice Images, which poses great challenges for scan whole image manually . <strong>[Method]</strong> We adopt Densely connected Atrous Spatial Pyramid Pooling to capture global context information , that fuse a set of atrous convolutional layers densely while generates multi-scale features that cover a larger scale range densely without increasing the model size . Post-processing is applied to the  test stage for further optimization, and OHEM is adopt to false positive excavation, so as to improve performance. <strong>[Result]</strong> Our algorithm can achieve classification accuracy 90.75%, which is of great clinical value.<p><img src='./images/3.jpg', width='350'></p></li>
+
+
+</ul>
+
+<h2>Competition</h2>
+
+<ul>
+
+<li>Kaggle image classification algorithm: classify objects in CIFAR10's 10 natural scenes with an accuracy of 94%；</li>
+<li>AI Hackathon：Facial Expression Recognition Challenge，Facial recognition system design with an accuracy of 75%；</li>
+<li>DATAHACH：Developed quantitative trading tools in 24 hours , developing strategies with advanced mathematical models and huge historical data, the most commercial value award；</li>
+
+</ul>
+
+</ul>
+
+<h2>Research Results</h2>
+
+<ul>
+
+<li>Software copyright of Real-time Iris Segmentation System under unrestricted conditions, 2019</li>
+</ul>
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-82196129-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+
+</html>
