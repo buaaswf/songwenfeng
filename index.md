@@ -19,7 +19,7 @@
 #### 宋文凤
 #### 计算机应用技术，计算机视觉方向博士 (数学理学学士，软件工程硕士)，研究方向专注在深度学习与计算机视觉方向的基础应用。包括行人再识别，非平衡数据集的图像分类算法，医学超声图像病灶检测与分类，目标自动追踪算法，单目图像深度估计，以及结合GAN的人脸图像美化。已发表论文10篇，另外有5篇在审。基础扎实创新能力解决问题的能力强。TIP,JBHI,NeurIPS,WACV等期刊和会议的审稿人。
 ###  news
-#### I am studying in Beihang VR laboaraty
+#### I am persuing my PHD in Beihang VR laboaraty
 
 ### publications
 #### Wenfeng Song, Shuai Li and et al (2018). Multitask Cascade Convolution Neural Networks for Automatic Thyroid Nodule Detection and Recognition. IEEE journal of biomedical and health informatics, 23(3), 1215-1224. (JCR 1区impact factor 4.21)
